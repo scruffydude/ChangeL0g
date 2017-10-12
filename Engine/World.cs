@@ -40,6 +40,7 @@ namespace Engine
         public const int LOCATION_ID_FARM_FIELD = 7;
         public const int LOCATION_ID_BRIDGE = 8;
         public const int LOCATION_ID_SPIDER_FIELD = 9;
+        public const int LOCATION_ID_PATH_TO_TOWN = 10;
 
         public const int UNSELLABLE_ITEM_PRICE = -1;
 
@@ -113,9 +114,11 @@ namespace Engine
         private static void PopulateLocations()
         {
             // Create each location
-            Location home = new Location(LOCATION_ID_HOME, "Home", "Your house. You really need to clean up the place.");
+            Location home = new Location(LOCATION_ID_HOME, "Home", "Your eyes shoot open as mutter to yourself.... Damn that was strange.....");
 
-            Location townSquare = new Location(LOCATION_ID_TOWN_SQUARE, "Town square", "You see a fountain.");
+            Location pathToTown = new Location(LOCATION_ID_PATH_TO_TOWN, "Path to town", "You step out of your door and see the path heading north toward town");
+
+            Location townSquare = new Location(LOCATION_ID_TOWN_SQUARE, "Town square", "Circling the fountian as you enter, you see paths leading in all directions.");
 
             Location alchemistHut = new Location(LOCATION_ID_ALCHEMIST_HUT, "Alchemist's hut", "There are many strange plants on the shelves.");
             alchemistHut.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_ALCHEMIST_GARDEN);
@@ -136,17 +139,19 @@ namespace Engine
             Location spiderField = new Location(LOCATION_ID_SPIDER_FIELD, "Forest", "You see spider webs covering covering the trees in this forest.");
             spiderField.MonsterLivingHere = MonsterByID(MONSTER_ID_GIANT_SPIDER);
 
-            Vendor bobTheRatCatcher = new Vendor("Bob the Rat-Catcher");
-            bobTheRatCatcher.AddItemToInventory(ItemByID(ITEM_ID_PIECE_OF_FUR), 5);
-            bobTheRatCatcher.AddItemToInventory(ItemByID(ITEM_ID_RAT_TAIL), 3);
+            Vendor townMerchant = new Vendor("Alwyin: General Goods");
+            townMerchant.AddItemToInventory(ItemByID(ITEM_ID_PIECE_OF_FUR), 5);
+            townMerchant.AddItemToInventory(ItemByID(ITEM_ID_RAT_TAIL), 3);
 
-            townSquare.VendorWorkHere = bobTheRatCatcher;
+            townSquare.VendorWorkHere = townMerchant;
 
             // Link the locations together
-            home.LocationToNorth = townSquare;
+            home.LocationToNorth = pathToTown;
+
+            pathToTown.LocationToNorth = townSquare;
 
             townSquare.LocationToNorth = alchemistHut;
-            townSquare.LocationToSouth = home;
+            townSquare.LocationToSouth = pathToTown;
             townSquare.LocationToEast = guardPost;
             townSquare.LocationToWest = farmhouse;
 

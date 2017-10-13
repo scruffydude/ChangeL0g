@@ -16,6 +16,8 @@ namespace ChangelogConsole
 
         private static Player _player;
 
+        private static ConsoleDraw testing = new ConsoleDraw();
+
         private static void Main(string[] args)
         {
             // Load the player
@@ -179,6 +181,9 @@ namespace ChangelogConsole
                     break;
                 case "trade":
                     ViewTraderInventory();
+                    break;
+                case "test":
+                    testing.drawTesting();
                     break;
                 default:
                     if (input.StartsWith("equip "))

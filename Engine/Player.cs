@@ -503,14 +503,6 @@ namespace Engine
             }
         }
 
-        public void Death()
-        {
-            MoveHome();
-            Inventory.Clear();
-            CreateDefaultPlayer();
-            Gold = 0;
-            ExperiencePoints = 0;
-        }
         public static Player CreatePlayerFromDatabase(int currentHitPoints, int maximumHitPoints, int gold, int experiencePoints, int currentLocationID)
         {
             Player player = new Player(currentHitPoints, maximumHitPoints, gold, experiencePoints);

@@ -107,7 +107,7 @@ namespace ChangeL0g
             });
 
             // Bind the vendor's inventory to the datagridview 
-            dgvVendorItems.DataSource = _currentPlayer.CurrentLocation.VendorWorkHere.Inventory;
+            dgvVendorItems.DataSource = _currentPlayer.CurrentLocation.VendorWorkingHere.Inventory;
 
             // When the user clicks on a row, call this function
             dgvVendorItems.CellClick += dgvVendorItems_CellClick;

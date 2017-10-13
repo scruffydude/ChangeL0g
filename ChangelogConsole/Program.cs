@@ -71,9 +71,9 @@ namespace ChangelogConsole
             {
                 DisplayCurrentLocation();
 
-                if (_player.CurrentLocation.VendorWorkHere != null)
+                if (_player.CurrentLocation.VendorWorkingHere != null)
                 {
-                    Console.WriteLine("You see a vendor here: {0}", _player.CurrentLocation.VendorWorkHere.Name);
+                    Console.WriteLine("You see a vendor here: {0}", _player.CurrentLocation.VendorWorkingHere.Name);
                 }
             }
         }
@@ -241,7 +241,7 @@ namespace ChangelogConsole
 
         private static void AttackMonster()
         {
-            if (_player.CurrentLocation.MonsterLivingHere == null)
+            if (!_player.CurrentLocation.HasAMonster)
             {
                 Console.WriteLine("There is nothing here to attack");
             }
@@ -345,13 +345,13 @@ namespace ChangelogConsole
             Console.WriteLine("VENDOR INVENTORY");
             Console.WriteLine("================");
 
-            if (_player.CurrentLocation.VendorWorkHere.Inventory.Count == 0)
+            if (_player.CurrentLocation.VendorWorkingHere.Inventory.Count == 0)
             {
                 Console.WriteLine("The vendor does not have any inventory");
             }
             else
             {
-                foreach (InventoryItem inventoryItem in _player.CurrentLocation.VendorWorkHere.Inventory)
+                foreach (InventoryItem inventoryItem in _player.CurrentLocation.VendorWorkingHere.Inventory)
                 {
                     Console.WriteLine("{0} {1} Price: {2}", inventoryItem.Quantity, inventoryItem.Description,
                         inventoryItem.Price);
@@ -376,7 +376,7 @@ namespace ChangelogConsole
             {
                 // Get the InventoryItem from the trader's inventory
                 InventoryItem itemToBuy =
-                    _player.CurrentLocation.VendorWorkHere.Inventory.SingleOrDefault(
+                    _player.CurrentLocation.VendorWorkingHere.Inventory.SingleOrDefault(
                         x => x.Details.Name.ToLower() == itemName);
 
                 // Check if the vendor has the item
@@ -442,7 +442,7 @@ namespace ChangelogConsole
 
         private static bool LocationDoesNotHaveVendor()
         {
-            bool locationDoesNotHaveVendor = _player.CurrentLocation.VendorWorkHere == null;
+            bool locationDoesNotHaveVendor = _player.CurrentLocation.VendorWorkingHere == null;
 
             Console.WriteLine("There is no vendor at this location");
 

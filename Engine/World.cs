@@ -126,27 +126,28 @@ namespace Engine
             alchemistHut.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_ALCHEMIST_GARDEN);
 
             Location alchemistsGarden = new Location(LOCATION_ID_ALCHEMISTS_GARDEN, "Alchemist's garden", "Many plants are growing here.");
-            alchemistsGarden.MonsterLivingHere = MonsterByID(MONSTER_ID_RAT);
+            alchemistsGarden.AddMonster(MONSTER_ID_RAT,80);
+            alchemistsGarden.AddMonster(MONSTER_ID_SNAKE, 20);
 
             Location farmhouse = new Location(LOCATION_ID_FARMHOUSE, "Farmhouse", "There is a small farmhouse, with a farmer in front.");
             farmhouse.QuestAvailableHere = QuestByID(QUEST_ID_CLEAR_FARMERS_FIELD);
 
             Location farmersField = new Location(LOCATION_ID_FARM_FIELD, "Farmer's field", "You see rows of vegetables growing here.");
-            farmersField.MonsterLivingHere = MonsterByID(MONSTER_ID_SNAKE);
+            farmersField.AddMonster(MONSTER_ID_SNAKE, 100);
 
             Location guardPost = new Location(LOCATION_ID_GUARD_POST, "Guard post", "There is a large, tough-looking guard here.", ItemByID(ITEM_ID_ADVENTURER_PASS));
 
             Location bridge = new Location(LOCATION_ID_BRIDGE, "Bridge", "A stone bridge crosses a wide river.");
 
             Location spiderField = new Location(LOCATION_ID_SPIDER_FIELD, "Forest", "You see spider webs covering covering the trees in this forest.");
-            spiderField.MonsterLivingHere = MonsterByID(MONSTER_ID_GIANT_SPIDER);
+            spiderField.AddMonster(MONSTER_ID_GIANT_SPIDER,100);
 
             Vendor townMerchant = new Vendor("Alwyin: General Goods");
             townMerchant.AddItemToInventory(ItemByID(ITEM_ID_PIECE_OF_FUR), 5);
             townMerchant.AddItemToInventory(ItemByID(ITEM_ID_RAT_TAIL), 3);
             townMerchant.AddItemToInventory(ItemByID(ITEM_ID_SPIDER_KILLER), 1);
 
-            townSquare.VendorWorkHere = townMerchant;
+            townSquare.VendorWorkingHere = townMerchant;
 
             // Link the locations together
             home.LocationToNorth = pathToTown;

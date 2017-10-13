@@ -137,7 +137,7 @@ namespace ChangeL0g
                 btnEast.Visible = (_player.CurrentLocation.LocationToEast != null);
                 btnSouth.Visible = (_player.CurrentLocation.LocationToSouth != null);
                 btnWest.Visible = (_player.CurrentLocation.LocationToWest != null);
-                btnTrade.Visible = (_player.CurrentLocation.VendorWorkHere != null);
+                btnTrade.Visible = (_player.CurrentLocation.VendorWorkingHere != null);
 
                 // Display current location name and description
                 rtbLocation.Text = _player.CurrentLocation.Name + Environment.NewLine;
@@ -145,7 +145,7 @@ namespace ChangeL0g
 
                 
 
-                if (_player.CurrentLocation.MonsterLivingHere == null)
+                if (!_player.CurrentLocation.HasAMonster)
                 {
                     cboWeapons.Visible = false;
                     cboPotions.Visible = false;

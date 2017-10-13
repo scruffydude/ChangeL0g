@@ -152,6 +152,7 @@ namespace Engine
             home.LocationToNorth = pathToTown;
 
             pathToTown.LocationToNorth = townSquare;
+            pathToTown.LocationToSouth = home;
 
             townSquare.LocationToNorth = alchemistHut;
             townSquare.LocationToSouth = pathToTown;
@@ -178,6 +179,7 @@ namespace Engine
 
             // Add the locations to the static list
             Locations.Add(home);
+            Locations.Add(pathToTown);
             Locations.Add(townSquare);
             Locations.Add(guardPost);
             Locations.Add(alchemistHut);

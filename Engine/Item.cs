@@ -18,7 +18,7 @@ namespace Engine
         {
             ID = id;
             Name = name;
-            NamePlural = NamePlural;
+            NamePlural = namePlural;
             Price = price;
         }
     }

@@ -29,6 +29,10 @@ namespace ChangelogConsole
             // Infinite loop, until the user types "exit"
             while (true)
             {
+
+                Console.WriteLine("Type 'Help' to see a list of commands");
+                Console.WriteLine("");
+                //Console.Write("Current Location: " + _player.CurrentLocation.Name + "\n");
                 // Display a prompt, so the user knows to type something
                 Console.Write(">");
 
@@ -72,6 +76,7 @@ namespace ChangelogConsole
 
         private static void Player_OnMessage(object sender, MessageEventArgs e)
         {
+
             Console.WriteLine(e.Message);
 
             if (e.AddExtraNewLine)
@@ -160,6 +165,11 @@ namespace ChangelogConsole
             }
             else if (input == "inventory")
             {
+                if(_player.Inventory.Any())
+                {
+                    Console.WriteLine("Inventory empty");
+                    
+                }
                 foreach (InventoryItem inventoryItem in _player.Inventory)
                 {
                     Console.WriteLine("{0}: {1}", inventoryItem.Description, inventoryItem.Quantity);

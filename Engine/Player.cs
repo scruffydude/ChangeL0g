@@ -432,7 +432,7 @@ namespace Engine
                     RaiseMessage("The " + _currentMonster.Name + " killed you.");
 
                     // Move player to "Home"
-                    MoveHome();
+                    Death();
                 }
             }
         }
@@ -648,6 +648,15 @@ namespace Engine
                 // If there was an error with the XML data, return a default player object
                 return Player.CreateDefaultPlayer();
             }
+        }
+
+        public void Death()
+        {
+            MoveHome();
+            Inventory.Clear();
+            CreateDefaultPlayer();
+            Gold = 0;
+            ExperiencePoints = 0;
         }
 
     }
